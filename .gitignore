@@ -39,7 +39,13 @@ sysinfo.txt
 # Third party tools
 Assets/PlayMaker/
 Assets/Plugins/
+Assets/Resources/
+Assets/Demigiant/
+Assets/DoozyUI/
 Assets/Gizmos/
 Assets/Gizmos.meta
 Assets/PlayMaker.meta
 Assets/Plugins.meta
+Assets/Resources.meta
+Assets/Demigiant.meta
+Assets/DoozyUI.meta
