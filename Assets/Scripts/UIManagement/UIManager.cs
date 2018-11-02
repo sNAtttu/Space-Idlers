@@ -9,11 +9,11 @@ namespace UIManagement
     public class UIManager : MonoBehaviour
     {
 
-        private PlayMakerFSM UiFsm;
+        private PlayMakerFSM _uiFsm;
 
         private void Start()
         {
-            UiFsm = GetComponent<PlayMakerFSM>();
+            _uiFsm = GetComponent<PlayMakerFSM>();
         }
 
         public void CheckIfUserExists()
@@ -21,10 +21,10 @@ namespace UIManagement
             User user = DataService.GetUser("sNAttu");
             if(user == null)
             {
-                UiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
+                _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
                 return;
             }
-            UiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);         
+            _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);         
         }
     }
 }
