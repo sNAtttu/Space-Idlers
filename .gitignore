@@ -35,3 +35,11 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Third party tools
+Assets/PlayMaker/
+Assets/Plugins/
+Assets/Gizmos/
+Assets/Gizmos.meta
+Assets/PlayMaker.meta
+Assets/Plugins.meta
