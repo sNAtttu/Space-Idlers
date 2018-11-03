@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 82094605627063644}
   m_Layer: 0
   m_Name: Alien
-  m_TagString: Enemy
+  m_TagString: FallingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

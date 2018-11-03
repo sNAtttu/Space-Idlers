@@ -24,8 +24,5 @@ namespace Shots
                 Destroy(gameObject);
             }
         }
-
-        
-
     }
 }
