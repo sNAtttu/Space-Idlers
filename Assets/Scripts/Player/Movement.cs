@@ -29,13 +29,13 @@ namespace Player
             {
                 // Move left
                 MovePlayer(Vector2.left, Input.GetAxis("Horizontal"));
-                _playerFSM.SendEvent(Constants.PlayerConstants.MoveRightEvent);
+                _playerFSM.SendEvent(Constants.PlayerConstants.MoveLeftEvent);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 // Move right
                 MovePlayer(Vector2.right, Input.GetAxis("Horizontal"));
-                _playerFSM.SendEvent(Constants.PlayerConstants.MoveLeftEvent);
+                _playerFSM.SendEvent(Constants.PlayerConstants.MoveRightEvent);
             }
             else
             {
