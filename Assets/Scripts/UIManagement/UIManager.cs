@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Models;
 using Utilities;
+using Newtonsoft.Json;
 
 namespace UIManagement
 {
@@ -19,7 +20,7 @@ namespace UIManagement
         public void CheckIfUserExists()
         {
             User user = DataService.GetUser("sNAttu");
-            if(user == null)
+            if (user == null)
             {
                 _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
                 return;
