@@ -38,6 +38,9 @@ GameObject:
   - component: {fileID: 50998579890700200}
   - component: {fileID: 114635734206485274}
   - component: {fileID: 82747685087956142}
+  - component: {fileID: 114853521603040116}
+  - component: {fileID: 61762811828825990}
+  - component: {fileID: 114574875895470970}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -123,6 +126,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61762811828825990
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772236116778028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
 --- !u!82 &82747685087956142
 AudioSource:
   m_ObjectHideFlags: 1
@@ -236,6 +264,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114574875895470970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772236116778028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56f48bce294380489796575555fca53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114635734206485274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,7 +360,7 @@ MonoBehaviour:
         x: 211
         y: 191
         width: 100
-        height: 64
+        height: 80
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -347,6 +386,14 @@ MonoBehaviour:
           isSystemEvent: 0
           isGlobal: 0
         toState: Shooting
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Die
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: Destroyed
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -397,7 +444,7 @@ MonoBehaviour:
         x: 474
         y: 131
         width: 107
-        height: 48
+        height: 64
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -415,6 +462,14 @@ MonoBehaviour:
           isSystemEvent: 0
           isGlobal: 0
         toState: Shooting
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Die
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: Destroyed
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -465,7 +520,7 @@ MonoBehaviour:
         x: 474
         y: 295
         width: 111
-        height: 48
+        height: 64
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -483,6 +538,14 @@ MonoBehaviour:
           isSystemEvent: 0
           isGlobal: 0
         toState: Shooting
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Die
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: Destroyed
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -533,7 +596,7 @@ MonoBehaviour:
         x: 483
         y: 215
         width: 100
-        height: 32
+        height: 48
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -543,6 +606,14 @@ MonoBehaviour:
           isSystemEvent: 1
           isGlobal: 0
         toState: Idle
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Die
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: Destroyed
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -658,9 +729,64 @@ MonoBehaviour:
         - finishedEvent
         paramDataPos: 00000000010000000000000001000000020000000000000000000000000000000000000000000000
         paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - name: Destroyed
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 723
+        y: 215
+        width: 100
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
     events:
     - name: FINISHED
       isSystemEvent: 1
+      isGlobal: 0
+    - name: Die
+      isSystemEvent: 0
       isGlobal: 0
     - name: MoveLeft
       isSystemEvent: 0
@@ -703,7 +829,7 @@ MonoBehaviour:
     locked: 0
     manualUpdate: 0
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 0
+    preprocessed: 1
     ExposedEvents: []
     RestartOnEnable: 1
     EnableDebugFlow: 0
@@ -738,6 +864,19 @@ MonoBehaviour:
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
   eventHandlerComponentsAdded: 0
+--- !u!114 &114853521603040116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772236116778028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4342e138a3d1c34c98e9eb6016edd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 3
+  BaseDamage: 1
 --- !u!114 &114926110146748524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,7 +923,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300024, guid: 936b9b76066ea914d9d77d1a88090980, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

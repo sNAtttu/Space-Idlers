@@ -7,9 +7,11 @@ namespace SceneManagement
     public class SpaceInvaderManager : MonoBehaviour
     {
         public GameObject PlayerPrefab;
+        public GameObject FortressPrefab;
         public List<GameObject> EnemyPrefabs;
         public List<Transform> EnemySpawningPoints;
         public Vector2 PlayerSpawnPosition = new Vector2(0, -4.5f);
+        public Vector2 FortressSpawnPosition = new Vector2(0, -4.7f);
         public float RespawnInterval = 1.0f;
         public bool ShouldSpawnEnemies = true;
 
@@ -21,6 +23,11 @@ namespace SceneManagement
         public void SpawnPlayer()
         {
             Instantiate(PlayerPrefab, PlayerSpawnPosition, PlayerPrefab.transform.rotation);
+        }
+
+        public void SpawnFortress()
+        {
+            Instantiate(FortressPrefab, FortressSpawnPosition, FortressPrefab.transform.rotation);
         }
 
         private void SpawnRandomEnemy()

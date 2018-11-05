@@ -11,7 +11,7 @@ namespace Objects
 
         private bool IsEnemy(Collider2D collision)
         {
-            if(collision.tag == "FallingEnemy")
+            if(collision.tag == "Enemy")
             {
                 return true;
             }
