@@ -7,7 +7,6 @@ namespace Enemy
 {
     public class FallingEnemy : MonoBehaviour
     {
-
         public Animator EnemyAnimator;
         [Tooltip("This is the amount of score that player will get by killing this badass")]
         public int ScoreAmount = 10;

@@ -6,6 +6,7 @@ namespace Shots
 {
     public class Fireball : MonoBehaviour
     {
+        public int Damage = 1;
         public float Speed = 5.0f;
 
         private SpriteRenderer _fireBallRenderer;

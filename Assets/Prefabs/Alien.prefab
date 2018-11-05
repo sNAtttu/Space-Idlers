@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 61263346607237460}
   - component: {fileID: 114939605506532476}
   - component: {fileID: 82094605627063644}
+  - component: {fileID: 114270599817167770}
   m_Layer: 0
   m_Name: Alien
   m_TagString: FallingEnemy
@@ -232,6 +233,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114270599817167770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661318494314008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45f8fe21e0e2d84fa2ab5ccb3381329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 3
 --- !u!114 &114939605506532476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyAnimator: {fileID: 95457704823029222}
+  ScoreAmount: 10
 --- !u!212 &212883019981789182
 SpriteRenderer:
   m_ObjectHideFlags: 1
