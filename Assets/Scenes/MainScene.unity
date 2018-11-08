@@ -1206,7 +1206,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: CheckIfUserExists
+        - FunctionName: GetUserData
           parameterType: None
           BoolParameter:
             useVariable: 0

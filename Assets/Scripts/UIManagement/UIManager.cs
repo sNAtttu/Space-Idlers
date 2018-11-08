@@ -17,9 +17,14 @@ namespace UIManagement
             _uiFsm = GetComponent<PlayMakerFSM>();
         }
 
-        public void CheckIfUserExists()
+        public void GetUserData()
         {
-            User user = DataService.GetUser("sNAttu");
+            string jsonPlayer = Development.MockDataService.GetPlayerData(69);
+
+            Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
+
+            Debug.Log($"User {user.Name} loaded!");
+
             if (user == null)
             {
                 _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
