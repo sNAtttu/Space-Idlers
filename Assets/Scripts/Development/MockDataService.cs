@@ -63,7 +63,7 @@ namespace Development
                     Name = $"Building_{i}",
                     Outcome = i * i,
                     Price = 10 * i,
-                    TimeOfProduction = i
+                    TimeOfProduction = i + 1
                 });
             }
 

@@ -22,7 +22,6 @@ namespace UIManagement
             string jsonPlayer = Development.MockDataService.GetPlayerData(69);
 
             Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
-
             Debug.Log($"User {user.Name} loaded!");
 
             if (user == null)
@@ -30,7 +29,8 @@ namespace UIManagement
                 _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
                 return;
             }
-            _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);         
+            SceneManagement.MainMenuDataCache.PlayerData = user;
+            _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);
         }
     }
 }
