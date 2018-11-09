@@ -52,6 +52,20 @@ namespace Development
 
             List<BaseBuilding> buildings = new List<BaseBuilding>();
 
+            List<string> buildingNames = new List<string>
+            {
+                "Hangaari",
+                "Taverna",
+                "Armory",
+                "Tukikohta",
+                "Valimo",
+                "Korso",
+                "Perse",
+                "Timpurinkuja",
+                "Lentotukikohta",
+                "Baari"
+            };
+
             for (int i = 0; i < 10; i++)
             {
                 buildings.Add(new BaseBuilding
@@ -60,7 +74,7 @@ namespace Development
                     IsUnlocked = i == 0 ? true : false,
                     Multiplier = 1,
                     Count = 1,
-                    Name = $"Building_{i}",
+                    Name = buildingNames[i],
                     Outcome = i * i,
                     Price = 10 * i,
                     TimeOfProduction = i + 1
@@ -88,7 +102,7 @@ namespace Development
             return new Models.Player
             {
                 Id = 69,
-                Money = 0,
+                Money = 6000,
                 Name = "Ankit",
                 SoundsOn = true,
                 TimePlayed = 0,

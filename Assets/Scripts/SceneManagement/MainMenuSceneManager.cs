@@ -2,21 +2,35 @@
 using UnityEngine;
 using Models;
 using DoozyUI;
-using UnityEngine.Events;
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
+using UserInput;
 
 namespace SceneManagement
 {
     public class MainMenuSceneManager : MonoBehaviour
     {
         public GameObject Building1Btn;
+        public GameObject Building2Btn;
+        public GameObject Building3Btn;
+        public GameObject Building4Btn;
+        public GameObject Building5Btn;
+        public GameObject Building6Btn;
+        public GameObject Building7Btn;
+        public GameObject Building8Btn;
+        public GameObject Building9Btn;
+        public GameObject Building10Btn;
 
+
+        private Dictionary<GameObject, BaseBuilding> buildingsAndButtons;
         private PlayMakerFSM sceneManagerFsm;
+        private UpgradeHandler upgradeHandler;
 
-        delegate void buildingButtonHandler(int cooldown);
-
+        
         private void Start()
         {
+            upgradeHandler = GetComponent<UpgradeHandler>();
             sceneManagerFsm = GetComponent<PlayMakerFSM>();
         }
 
@@ -28,8 +42,25 @@ namespace SceneManagement
                 Debug.LogError("Player base missing");
                 throw new System.ArgumentNullException("Player base missing!");
             }
-            BaseBuilding building1 = playerData.PlayerBase.Building1;
-            PopulateButtonValues(Building1Btn, building1);
+
+            buildingsAndButtons = new Dictionary<GameObject, BaseBuilding>();
+
+            // TODO: When I'm not tired. Do this in more maintainable way. Thanks future Santeri. :D
+            buildingsAndButtons.Add(Building1Btn, playerData.PlayerBase.Building1);
+            buildingsAndButtons.Add(Building2Btn, playerData.PlayerBase.Building2);
+            buildingsAndButtons.Add(Building3Btn, playerData.PlayerBase.Building3);
+            buildingsAndButtons.Add(Building4Btn, playerData.PlayerBase.Building4);
+            buildingsAndButtons.Add(Building5Btn, playerData.PlayerBase.Building5);
+            buildingsAndButtons.Add(Building6Btn, playerData.PlayerBase.Building6);
+            buildingsAndButtons.Add(Building7Btn, playerData.PlayerBase.Building7);
+            buildingsAndButtons.Add(Building8Btn, playerData.PlayerBase.Building8);
+            buildingsAndButtons.Add(Building9Btn, playerData.PlayerBase.Building9);
+            buildingsAndButtons.Add(Building10Btn, playerData.PlayerBase.Building10);
+
+            foreach (KeyValuePair<GameObject, BaseBuilding> entry in buildingsAndButtons)
+            {
+                PopulateButtonValues(entry.Key, entry.Value);
+            }
         }
 
         IEnumerator FillCooldownMeter(GameObject pressedButton, Image fillMeter, float cooldownSeconds)
@@ -60,6 +91,7 @@ namespace SceneManagement
                     Debug.LogError("Fill meter type is invalid");
                     return;
                 }
+                upgradeHandler.UpgradeBuildingOnClick(buildingData);
                 StartCoroutine(FillCooldownMeter(button, fillMeterImage, buildingData.TimeOfProduction));
             });
 
