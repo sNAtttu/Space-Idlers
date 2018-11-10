@@ -2,10 +2,11 @@
 using UnityEngine;
 using Models;
 using DoozyUI;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UserInput;
+using TMPro;
+using UIManagement;
 
 namespace SceneManagement
 {
@@ -61,11 +62,12 @@ namespace SceneManagement
             {
                 PopulateButtonValues(entry.Key, entry.Value);
             }
+            sceneManagerFsm.SendEvent(Constants.MainMenuConstants.ButtonsPopulatedEvent);
         }
 
         IEnumerator FillCooldownMeter(GameObject pressedButton, Image fillMeter, float cooldownSeconds)
         {
-            pressedButton.GetComponentInParent<UIButton>().DisableButton();
+            pressedButton.GetComponent<UIButton>().DisableButton();
             Debug.Log("Cooldown seconds: " + cooldownSeconds);
             float usedTime = 0;
             fillMeter.fillAmount = 0;
@@ -75,7 +77,7 @@ namespace SceneManagement
                 fillMeter.fillAmount = usedTime / cooldownSeconds;
                 yield return new WaitForEndOfFrame();
             }
-            pressedButton.GetComponentInParent<UIButton>().EnableButton();
+            pressedButton.GetComponent<UIButton>().EnableButton();
         }
 
         private void PopulateButtonValues(GameObject button, BaseBuilding buildingData)
@@ -83,12 +85,11 @@ namespace SceneManagement
 
             button.GetComponent<Button>().onClick.AddListener(() => 
             {
-                // TODO: Find a better way to do this
-                Transform fillMeter = button.transform.GetChild(2);
+                GameObject fillMeter = button.GetComponent<ButtonComponents>().FillMeter;
                 Image fillMeterImage = fillMeter.GetComponent<Image>();
                 if(fillMeterImage.type != Image.Type.Filled)
                 {
-                    Debug.LogError("Fill meter type is invalid");
+                    Debug.LogError("Fill meter image type is invalid");
                     return;
                 }
                 upgradeHandler.UpgradeBuildingOnClick(buildingData);
@@ -98,7 +99,20 @@ namespace SceneManagement
             Text buttonLabel = button.GetComponentInChildren<Text>();
             buttonLabel.text = buildingData.Name;
 
-            sceneManagerFsm.SendEvent(Constants.MainMenuConstants.ButtonsPopulatedEvent);
+            TextMeshProUGUI costText = button.GetComponent<ButtonComponents>().UpgradeCost.GetComponentInChildren<TextMeshProUGUI>();
+
+            costText.SetText(buildingData.Price.ToString());
+
+            TextMeshProUGUI countText = button.GetComponent<ButtonComponents>().BuildingCount.GetComponentInChildren<TextMeshProUGUI>();
+
+            countText.SetText(buildingData.Count.ToString());
+
+            // Last thing to do is to disable button if it's not unlocked yet
+            if (!buildingData.IsUnlocked)
+            {
+                button.GetComponent<UIButton>().DisableButton();
+            }
+
         }
 
     }

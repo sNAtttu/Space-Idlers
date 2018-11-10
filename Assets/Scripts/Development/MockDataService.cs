@@ -71,9 +71,9 @@ namespace Development
                 buildings.Add(new BaseBuilding
                 {
                     BuildingId = i,
-                    IsUnlocked = i == 0 ? true : false,
+                    IsUnlocked = i <= 4 ? true : false,
                     Multiplier = 1,
-                    Count = 1,
+                    Count = (10 - i),
                     Name = buildingNames[i],
                     Outcome = i * i,
                     Price = 10 * i,
