@@ -6,6 +6,8 @@ namespace SceneManagement
 {
     public class SpaceInvaderManager : MonoBehaviour
     {
+        public List<GameObject> LevelEnemies;
+
         public GameObject PlayerPrefab;
         public GameObject FortressPrefab;
         public List<GameObject> EnemyPrefabs;
@@ -14,9 +16,12 @@ namespace SceneManagement
         public Vector2 FortressSpawnPosition = new Vector2(0, -4.7f);
         public float RespawnInterval = 1.0f;
         public bool ShouldSpawnEnemies = true;
+        public bool ShouldSpawnFortress = false;
+        private PlayMakerFSM sceneManager;
 
         private void Start()
         {
+            sceneManager = GetComponent<PlayMakerFSM>();
             StartCoroutine(SpawnEnemy());
         }
 
@@ -27,7 +32,11 @@ namespace SceneManagement
 
         public void SpawnFortress()
         {
-            Instantiate(FortressPrefab, FortressSpawnPosition, FortressPrefab.transform.rotation);
+            if (ShouldSpawnFortress)
+            {
+                Instantiate(FortressPrefab, FortressSpawnPosition, FortressPrefab.transform.rotation);
+            }
+
         }
 
         private void SpawnRandomEnemy()
@@ -43,6 +52,15 @@ namespace SceneManagement
             {
                 SpawnRandomEnemy();
                 yield return new WaitForSeconds(RespawnInterval);
+            }
+        }
+
+        public void RemoveLevelEnemy(GameObject enemyObject)
+        {
+            LevelEnemies.Remove(enemyObject);
+            if(LevelEnemies.Count == 0)
+            {
+                sceneManager.SendEvent("EnemiesDestroyed");
             }
         }
 
