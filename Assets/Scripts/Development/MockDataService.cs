@@ -54,16 +54,16 @@ namespace Development
 
             List<string> buildingNames = new List<string>
             {
-                "Hangaari",
-                "Taverna",
+                "Hangar",
                 "Armory",
-                "Tukikohta",
-                "Valimo",
-                "Korso",
-                "Perse",
-                "Timpurinkuja",
-                "Lentotukikohta",
-                "Baari"
+                "Enginery",
+                "Factory",
+                "Machinery",
+                "Barracks",
+                "Workshop",
+                "Canteen",
+                "Runway",
+                "Brothel"
             };
 
             for (int i = 0; i < 10; i++)

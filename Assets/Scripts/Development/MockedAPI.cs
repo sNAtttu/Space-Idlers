@@ -6,7 +6,10 @@ namespace Development
 {
     public class MockedAPI
     {
-
+        public static void IncrementPlayerMoneyAfterGame(int moneyAmount)
+        {
+            SceneManagement.MainMenuDataCache.PlayerData.Money += moneyAmount;
+        }
     }
 }
 

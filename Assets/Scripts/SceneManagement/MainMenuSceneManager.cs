@@ -62,7 +62,6 @@ namespace SceneManagement
             {
                 PopulateButtonValues(entry.Key, entry.Value);
             }
-            sceneManagerFsm.SendEvent(Constants.MainMenuConstants.ButtonsPopulatedEvent);
         }
 
         IEnumerator FillCooldownMeter(GameObject pressedButton, Image fillMeter, float cooldownSeconds)
@@ -103,9 +102,7 @@ namespace SceneManagement
 
             costText.SetText(buildingData.Price.ToString());
 
-            TextMeshProUGUI countText = button.GetComponent<ButtonComponents>().BuildingCount.GetComponentInChildren<TextMeshProUGUI>();
-
-            countText.SetText(buildingData.Count.ToString());
+            
 
             // Last thing to do is to disable button if it's not unlocked yet
             if (!buildingData.IsUnlocked)

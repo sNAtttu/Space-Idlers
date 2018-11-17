@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UIManagement
 {
@@ -8,7 +9,6 @@ namespace UIManagement
     {
         public GameObject FillMeter;
         public GameObject UpgradeCost;
-        public GameObject BuildingCount;
     }
 }
 
