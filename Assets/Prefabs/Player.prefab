@@ -57,7 +57,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4139513303195006}
   - component: {fileID: 212276012386780224}
-  - component: {fileID: 95177114783870648}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -149,7 +148,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1.29, y: 1}
   m_EdgeRadius: 0
 --- !u!82 &82747685087956142
 AudioSource:
@@ -246,24 +245,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &95177114783870648
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1823682464429722}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af747ef9fa2872d44b669e43db58c684, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114574875895470970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,7 +905,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300024, guid: 936b9b76066ea914d9d77d1a88090980, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8651eba383873b244965939e7e5a140f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

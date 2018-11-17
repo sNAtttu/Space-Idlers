@@ -26,6 +26,11 @@ namespace SceneManagement
             float enemyWidth = enemyPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.x;
             float enemyHeight = enemyPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.y;
 
+            if(sceneManager.LevelEnemies == null)
+            {
+                sceneManager.LevelEnemies = new List<GameObject>();
+            }
+
             for (int lines = 0; lines < lineAmount; lines++)
             {
                 GameObject enemyLine = new GameObject { name = $"line_{lines}" };

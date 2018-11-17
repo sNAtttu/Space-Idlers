@@ -5,6 +5,8 @@ using Models;
 using Utilities;
 using Newtonsoft.Json;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 namespace UIManagement
 {
@@ -12,6 +14,9 @@ namespace UIManagement
     {
         public TextMeshProUGUI PlayerNameText;
         public TextMeshProUGUI PlayerMoneyText;
+        public Text UsernameText;
+
+        public bool UseMockedVersion = true;
 
         private PlayMakerFSM _uiFsm;
 
@@ -31,21 +36,40 @@ namespace UIManagement
             PlayerNameText.SetText(user.Name);
         }
 
+        public void SaveUserData()
+        {
+            try
+            {
+                string username = UsernameText.text;
+                Models.Player savedPlayer = DataService.CreateUser(username);
+                DataService.SavePlayerDataLocally(savedPlayer);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to save player data");
+                throw e;
+            }
+        }
+
         public void GetUserData()
         {
-            string jsonPlayer = Development.MockDataService.GetPlayerData(69);
-
-            Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
-            Debug.Log($"User {user.Name} loaded!");
-
-            if (user == null)
+            if (UseMockedVersion)
             {
-                _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
-                return;
+                string jsonPlayer = Development.MockDataService.GetPlayerData(69);
+
+                Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
+
+                if (user == null)
+                {
+                    _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
+                    return;
+                }
+                Debug.Log($"User {user.Name} loaded!");
+                SceneManagement.MainMenuDataCache.PlayerData = user;
+                _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);
+                InitializePlayerDataToUi(user);
             }
-            SceneManagement.MainMenuDataCache.PlayerData = user;
-            _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);
-            InitializePlayerDataToUi(user);
+
         }
     }
 }

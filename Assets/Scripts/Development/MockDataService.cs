@@ -101,7 +101,7 @@ namespace Development
         {
             return new Models.Player
             {
-                Id = 69,
+                Id = System.Guid.NewGuid(),
                 Money = 6000,
                 Name = "Ankit",
                 SoundsOn = true,

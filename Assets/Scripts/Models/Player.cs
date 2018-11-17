@@ -7,7 +7,7 @@ namespace Models
     [JsonObject]
     public class Player
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public int Money { get; set; }
         public int TimePlayed { get; set; }
@@ -16,6 +16,16 @@ namespace Models
         public List<SpaceInvaderMatch> SpaceInvaderMatches { get; set; }
         public SpaceInvaderPlayerShip SpaceInvaderPlayerShip { get; set; }
         public PlayerBase PlayerBase { get; set; }
+
+        public static implicit operator PlayerLocalData(Player playerData)
+        {
+            return new PlayerLocalData
+            {
+                id = playerData.Id,
+                username = playerData.Name
+            };
+        }
+
     }
 }
 

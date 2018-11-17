@@ -5,11 +5,24 @@ using Models;
 using System.Net;
 using Newtonsoft.Json;
 using System;
+using System.IO;
 
 namespace Utilities
 {
-    public class DataService : MonoBehaviour
+    public class DataService
     {
+
+        private static readonly string HostUrl = "http://localhost:5000";
+
+        public static Models.Player CreateUser(string username)
+        {
+            WebClient webClient = new WebClient();
+            webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+            string url = $"{HostUrl}/api/playerData";
+            string response = webClient.UploadString(url, username);
+            return JsonConvert.DeserializeObject<Models.Player>(response);
+        }
+
         public static Models.Player GetUser(string username)
         {
             return null;
@@ -36,6 +49,19 @@ namespace Utilities
             string serializedGameData = JsonConvert.SerializeObject(gameData);
             string response = client.UploadString("https://idlepeli-wa.azurewebsites.net/api/SpaceInvaderDataGames", serializedGameData);
             Debug.Log(response);
+        }
+
+        public static void SavePlayerDataLocally(PlayerLocalData data)
+        {
+            try
+            {
+                string jsonData = JsonConvert.SerializeObject(data);
+                File.WriteAllText($"{Path.Combine(Application.persistentDataPath, "playerData.json")}", jsonData);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
     }

@@ -52,7 +52,6 @@ namespace Player
 
         private void MovePlayer(Vector2 direction, float speed)
         {
-            _playerAnimator.SetFloat("MovementDirection", speed);
             transform.Translate(direction * Time.deltaTime * Speed);
         }
 
