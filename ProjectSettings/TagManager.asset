@@ -12,6 +12,7 @@ TagManager:
   - FortressHpText
   - RightBorder
   - LeftBorder
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

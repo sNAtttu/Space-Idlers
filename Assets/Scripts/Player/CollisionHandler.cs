@@ -21,6 +21,10 @@ namespace Player
                 int damage = collision.GetComponent<Enemy.EnemyStats>().Damage;
                 _playerStats.ReducePlayerHp(damage);
             }
+            else if(collision.tag == "EnemyProjectile")
+            {
+                _playerStats.DestroyPlayer();
+            }
         }
     }
 }

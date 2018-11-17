@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114523859736350412}
   - component: {fileID: 82859786623972728}
   - component: {fileID: 114226904193084776}
+  - component: {fileID: 114870787064531370}
   m_Layer: 0
   m_Name: JellyEnemy
   m_TagString: Enemy
@@ -270,6 +271,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d474578641842c744bd4c4f2a2da38ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114870787064531370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272476774645666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f5c3d88c34e504faeb531a8b59c459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyProjectile: {fileID: 1686274040355268, guid: d45c32430fa8c2041a19be920102cef4,
+    type: 2}
+  ShootingIntervalMin: 1.2
+  ShootingIntervalMax: 5
+  EnemyShouldBeShooting: 1
 --- !u!212 &212543848537187066
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -18,7 +18,7 @@ namespace Player
             SpaceInvadersUIManager.SetPlayerHpText(HealthPoints);
         }
 
-        private void DestroyPlayer()
+        internal void DestroyPlayer()
         {
             _playerFSM.SendEvent("Die");
         }
