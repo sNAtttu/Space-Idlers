@@ -21,6 +21,12 @@ namespace SceneManagement
                 SpaceInvadersUIManager.SetScoreText(currentScore);
             }
         }
+
+        public void UpdatePlayerScore()
+        {
+            Development.MockedAPI.IncrementPlayerMoneyAfterGame(CurrentScore);
+        }
+
     }
 
 }

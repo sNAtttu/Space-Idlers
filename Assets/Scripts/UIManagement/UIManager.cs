@@ -55,19 +55,27 @@ namespace UIManagement
         {
             if (UseMockedVersion)
             {
-                string jsonPlayer = Development.MockDataService.GetPlayerData(69);
-
-                Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
-
-                if (user == null)
+                if(SceneManagement.MainMenuDataCache.PlayerData == null)
                 {
-                    _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
-                    return;
+                    string jsonPlayer = Development.MockDataService.GetPlayerData(69);
+
+                    Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
+
+                    if (user == null)
+                    {
+                        _uiFsm.SendEvent(Constants.UiConstants.NoUserEvent);
+                        return;
+                    }
+                    Debug.Log($"User {user.Name} loaded!");
+                    SceneManagement.MainMenuDataCache.PlayerData = user;
+                    _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);
+                    InitializePlayerDataToUi(user);
                 }
-                Debug.Log($"User {user.Name} loaded!");
-                SceneManagement.MainMenuDataCache.PlayerData = user;
-                _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);
-                InitializePlayerDataToUi(user);
+                else
+                {
+                    _uiFsm.SendEvent(Constants.UiConstants.UserExistsEvent);
+                    InitializePlayerDataToUi(SceneManagement.MainMenuDataCache.PlayerData);
+                }
             }
 
         }

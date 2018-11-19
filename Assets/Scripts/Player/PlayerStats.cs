@@ -36,6 +36,12 @@ namespace Player
             }
         }
 
+        public void SendPlayerDeadEventToSceneManager()
+        {
+            GameObject sceneManager = GameObject.FindGameObjectWithTag("SpaceInvaderManager");
+            sceneManager.GetComponent<PlayMakerFSM>().SendEvent("PlayerDead");
+        }
+
     }
 }
 

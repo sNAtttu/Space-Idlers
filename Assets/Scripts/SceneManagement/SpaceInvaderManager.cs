@@ -27,7 +27,8 @@ namespace SceneManagement
 
         public void SpawnPlayer()
         {
-            Instantiate(PlayerPrefab, PlayerSpawnPosition, PlayerPrefab.transform.rotation);
+            GameObject player = Instantiate(PlayerPrefab, PlayerSpawnPosition, PlayerPrefab.transform.rotation);
+            player.GetComponent<Player.Movement>().Speed += MainMenuDataCache.PlayerData.SpaceInvaderPlayerShip.Speed;
         }
 
         public void SpawnFortress()

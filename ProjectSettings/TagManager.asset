@@ -13,6 +13,7 @@ TagManager:
   - RightBorder
   - LeftBorder
   - EnemyProjectile
+  - SpaceInvaderManager
   layers:
   - Default
   - TransparentFX
