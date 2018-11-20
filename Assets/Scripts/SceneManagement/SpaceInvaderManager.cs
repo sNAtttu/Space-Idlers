@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,10 +20,23 @@ namespace SceneManagement
         public bool ShouldSpawnFortress = false;
         private PlayMakerFSM sceneManager;
 
+        private void Awake()
+        {
+            // TODO: ONLY IN DEVELOPMENT USAGE
+            if (Debug.isDebugBuild && MainMenuDataCache.PlayerData == null)
+            {
+                string jsonPlayer = Development.MockDataService.GetPlayerData(69);
+
+                Models.Player user = JsonConvert.DeserializeObject<Models.Player>(jsonPlayer);
+                MainMenuDataCache.PlayerData = user;
+            }
+        }
+
         private void Start()
         {
             sceneManager = GetComponent<PlayMakerFSM>();
             StartCoroutine(SpawnEnemy());
+
         }
 
         public void SpawnPlayer()

@@ -3202,6 +3202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesInRow: 10
+  DifficultyLevel: 8
   EnemiesParentObject: {fileID: 263714756}
   enemyPrefab: {fileID: 1272476774645666, guid: 0c6d9383418ea4746958fd9c8306ad8b,
     type: 2}

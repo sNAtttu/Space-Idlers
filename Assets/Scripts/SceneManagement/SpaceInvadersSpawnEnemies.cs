@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Enemy;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace SceneManagement
     public class SpaceInvadersSpawnEnemies : MonoBehaviour
     {
         public int EnemiesInRow = 10;
+        // TODO This should come from the API
+        public int DifficultyLevel = 1;
 
         public Transform EnemiesParentObject;
         public GameObject enemyPrefab;
@@ -35,15 +38,14 @@ namespace SceneManagement
             {
                 GameObject enemyLine = new GameObject { name = $"line_{lines}" };
 
-                Enemy.EnemyMovement movementScript = enemyLine.AddComponent<Enemy.EnemyMovement>();
+                // TODO: Use difficulty level instead of number one defined in the variables
+                AttachBehaviorScriptsToTheEnemyLine(enemyLine, DifficultyLevel);
 
-                enemyLine.transform.SetParent(EnemiesParentObject);
-                enemyLine.transform.localPosition = new Vector3();
-
-                for(int enemyCount = 0; enemyCount < EnemiesInRow; enemyCount++)
+                for (int enemyCount = 0; enemyCount < EnemiesInRow; enemyCount++)
                 {
                     GameObject spawnedEnemy = Instantiate(enemyPrefab, enemyLine.transform);
                     spawnedEnemy.transform.localPosition = spawnPoint;
+                    spawnedEnemy.GetComponent<ShootingEnemy>().SetShootingDifficulty(DifficultyLevel);
                     spawnPoint.x += enemyWidth;
                     sceneManager.LevelEnemies.Add(spawnedEnemy);
                 }
@@ -51,6 +53,17 @@ namespace SceneManagement
                 spawnPoint.y -= enemyHeight;
             }
             sceneManagerFsm.SendEvent("EnemiesSpawned");
+        }
+
+        private void AttachBehaviorScriptsToTheEnemyLine(GameObject enemyLine, int difficultyLevel)
+        {
+            EnemyMovement movementScript = enemyLine.AddComponent<EnemyMovement>();
+            movementScript.MovementIntervalSeconds = (movementScript.MovementIntervalSeconds / difficultyLevel);
+            enemyLine.transform.SetParent(EnemiesParentObject);
+            enemyLine.transform.localPosition = new Vector3();
+
+            LineShooting shootingRules = enemyLine.AddComponent<LineShooting>();
+            shootingRules.EnemyShotCooldown = (shootingRules.EnemyShotCooldown / difficultyLevel);
         }
     }
 }

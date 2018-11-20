@@ -3097,8 +3097,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 598
-        y: 408
+        x: 686
+        y: 394
         width: 194
         height: 16
       isBreakpoint: 0
@@ -3248,7 +3248,7 @@ MonoBehaviour:
         x: 407
         y: 411
         width: 131
-        height: 80
+        height: 96
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -3282,6 +3282,14 @@ MonoBehaviour:
           isSystemEvent: 0
           isGlobal: 0
         toState: Updating Speed
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Play
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: LoadSpaceInvaderScene
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
